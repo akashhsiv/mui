@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { AppBar, Toolbar, styled, Typography, InputBase, Badge, Box, Avatar, Menu, MenuItem } from '@mui/material';
 import Pets from '@mui/icons-material/Pets';
-import { Mail, Notifications } from '@mui/icons-material';
+import { Mail, Notifications, AccountCircle, ExitToApp } from '@mui/icons-material';
 
 const Search = styled('div')(({ theme }) => ({
     backgroundColor: 'white',
@@ -14,7 +14,7 @@ const Icons = styled(Box)(({ theme }) => ({
     display: 'none',
     gap: '20px',
     alignItems: 'center',
-    [theme.breakpoints.up("sm")]:{
+    [theme.breakpoints.up("sm")]: {
         display: "flex",
     },
 }));
@@ -28,18 +28,19 @@ const UserBox = styled(Box)(({ theme }) => ({
     display: 'flex',
     gap: '10px',
     alignItems: 'center',
-    [theme.breakpoints.up("sm")]:{
+    [theme.breakpoints.up("sm")]: {
         display: "none",
     },
 }));
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    
     return (
         <AppBar position='sticky'>
             <StyledToolbar>
                 <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>
-                    ASH
+                    OTAkU HuB
                 </Typography>
                 <Pets sx={{ display: { xs: 'block', sm: 'none' } }} />
                 <Search>
@@ -52,13 +53,15 @@ const Navbar = () => {
                     <Badge badgeContent={4} color="error">
                         <Notifications />
                     </Badge>
-                    <Avatar sx={{ width: 30, height: 30 }} src="https://www.w3schools.com/w3images/avatar2.png" 
-                    onClick={e=>setOpen(true)}
-                    />                    
+                    <Avatar sx={{ width: 30, height: 30 }} 
+                        src="https://www.w3schools.com/w3images/avatar2.png" 
+                        onClick={e => setOpen(true)} 
+                    />
                 </Icons>
-               
-                <UserBox onClick={e=>setOpen(true)}>
-                    <Avatar sx={{ width: 30, height: 30 }} src="https://www.w3schools.com/w3images/avatar2.png" />
+                <UserBox onClick={e => setOpen(true)}>
+                    <Avatar sx={{ width: 30, height: 30 }} 
+                        src="https://www.w3schools.com/w3images/avatar2.png" 
+                    />
                     <Typography variant="span">John</Typography>
                 </UserBox>
             </StyledToolbar>
@@ -77,12 +80,22 @@ const Navbar = () => {
                     horizontal: 'right',
                 }}
             >
-                <MenuItem>Profile</MenuItem>
-                <MenuItem>My account</MenuItem>
-                <MenuItem>Logout</MenuItem>
+                <MenuItem onClick={() => setOpen(false)}>
+                    <AccountCircle sx={{ marginRight: 1 }} />
+                    Profile
+                </MenuItem>
+                <MenuItem onClick={() => setOpen(false)}>
+                    <AccountCircle sx={{ marginRight: 1 }} />
+                    My account
+                </MenuItem>
+                <MenuItem onClick={() => setOpen(false)}>
+                    <ExitToApp sx={{ marginRight: 1 }} />
+                    Logout
+                </MenuItem>
             </Menu>
         </AppBar>
     );
 };
 
 export default Navbar;
+

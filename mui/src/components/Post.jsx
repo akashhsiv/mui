@@ -1,51 +1,56 @@
 import React from 'react';
-import {Card, CardHeader, Avatar, IconButton, CardMedia, CardContent, Typography, CardActions} from '@mui/material';
-import { red } from '@mui/material/colors';
+import {
+  Card,
+  CardHeader,
+  Avatar,
+  IconButton,
+  CardMedia,
+  CardContent,
+  Typography,
+  CardActions,
+  Checkbox,
+} from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Favorite from '@mui/icons-material/Favorite';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
-import Checkbox from '@mui/material/Checkbox';
 
-const Post = () => {
+const Post = ({ post }) => {
   return (
     <div>
-        <Card sx={{margin:5}}>
+      <Card sx={{ margin: 5 }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              S V
-            </Avatar>
+            <Avatar src={post.avatarUrl} aria-label="recipe" />
           }
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />
             </IconButton>
           }
-          title="Southern Viscacha"
-          subheader="A Relaxed and Somber Rodent"
+          title={post.title}
         />
         <CardMedia
           component="img"
           height="20%"
-          image="https://media.gettyimages.com/id/163243554/photo/a-mountain-viscacha-yawning-and-stretching-on-the-salt-flats-salar-de-uyuni-bolivia.jpg?s=2048x2048&w=gi&k=20&c=SVHeH4gbAdSLR8_de6FujquempAvmtaq_hflfDfSd2Q="
-          alt="viscacha"
+          image={post.imageUrl}
+          alt={post.title}
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            Viscachas are South American rodents known for their long ears, bushy tails, and somber expressions. They spend much of their time resting on rocks and sunbathing.
+            {post.caption}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-           <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{color:"red"}}/>}/>
+            <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{ color: "red" }} />} />
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
           </IconButton>
-          </CardActions>
+        </CardActions>
       </Card>
     </div>
-
   );
 };
 
