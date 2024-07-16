@@ -57,7 +57,7 @@ const Navbar = () => {
       <StyledToolbar>
         <div>
           <Avatar
-            sx={{ width: 40, height: 40 }} // Increase the size of the icon
+            sx={{ width: 40, height: 40, display: { xs: "block", md: "none" } }} // Increase the size of the icon
             src="https://i.pinimg.com/236x/7f/22/5c/7f225c5433b7bfbbc1499196b73839f4.jpg"
             onClick={(e) => setOpen(true)}
           />
@@ -67,7 +67,6 @@ const Navbar = () => {
           >
             OTAkU HuB
           </Typography>
-          <Pets sx={{ display: { xs: "block", md: "none" } }} />
         </div>
         <Search>
           <InputBase placeholder="search..." />
@@ -90,7 +89,7 @@ const Navbar = () => {
             sx={{ width: 30, height: 30 }}
             src="https://i.pinimg.com/236x/cc/ec/25/ccec25ec4cfd6d6e4d640810618e30fb.jpg"
           />
-          <Typography variant="span">John</Typography>
+          <Typography variant="span">Goku</Typography>
         </UserBox>
       </StyledToolbar>
 
